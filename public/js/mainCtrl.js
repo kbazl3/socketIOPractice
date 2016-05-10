@@ -1,9 +1,10 @@
 angular.module("app")
-    .controller("mainCtrl", function($scope) {
+    .controller("mainCtrl", function($scope, $http) {
 
         var socket = io();
 
         var myEl = angular.element(document.querySelector('#messages'));
+        $scope.username = true;
 
         $scope.sendMessage = function(msg) {
             console.log(msg);
@@ -15,6 +16,16 @@ angular.module("app")
         socket.on('chat message', function(msg) {
             myEl.append('<li>' + msg + '</li>');
         });
+
+        $scope.getUsername = function() {
+            $http({
+                method: "GET",
+                url: '/'
+            })
+            .then(function(fbuser) {
+                console.log(fbuser);
+            });
+        };
 
 
 
