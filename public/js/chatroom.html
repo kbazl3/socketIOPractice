@@ -1,0 +1,8 @@
+<h1>chatroom</h1>
+<ul id="messages">
+</ul>
+
+<form ng-submit="sendMessage(messageBox)">
+      <input ng-model="messageBox" autocomplete="off" />
+      <button type="button" ng-click="sendMessage(messageBox)">Send</button>
+</form>
